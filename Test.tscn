@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5d2626wluwgg"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_isddk"]
+[ext_resource type="Resource" uid="uid://b824cpbm4fygf" path="res://examples/monsters/monsters/rombone.tres" id="2_2hms7"]
+[ext_resource type="Script" path="res://examples/monsters/monster.gd" id="3_f67x4"]
+[ext_resource type="PackedScene" uid="uid://cy0aqpx4ui64b" path="res://LLMSubsystem/LLMSubsystem.tscn" id="3_fov4q"]
+[ext_resource type="Script" path="res://LLMSubsystem/SubsystemResource.gd" id="4_oe8gm"]
+[ext_resource type="Resource" uid="uid://ciayubpgmhnou" path="res://examples/monsters/monsters/qwarp.tres" id="5_khqwy"]
+[ext_resource type="Resource" uid="uid://dy1yrgjy126om" path="res://examples/monsters/monsters/chiplet.tres" id="6_hhc0f"]
+[ext_resource type="Script" path="res://addons/jam_launch/core/JamConnect.gd" id="8_ukn5d"]
+
+[sub_resource type="Resource" id="Resource_roq78"]
+script = ExtResource("3_f67x4")
+monster_name = ""
+monster_description = ""
+power_level = 5
+elements = ""
+rarity = ""
+
+[sub_resource type="LabelSettings" id="LabelSettings_r4htu"]
+font_size = 30
+
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_isddk")
+
+[node name="LLMSubsystem" parent="." instance=ExtResource("3_fov4q")]
+resource_template = SubResource("Resource_roq78")
+model_name = "ministral-3b-latest"
+lore_prompt = "A great silence is covering the world. Humans band together in small villages and traveling bands to tame the Mana - creatures of light and sound with the power to undo the silence. Wanderers brave the wilds to find and tame the Mana."
+system_prompt_prefix = "Generate a Mana creature based on the given criteria. Several examples of creatures are listed below. Match the JSON structure of these examples exactly."
+few_shot_examples = Array[ExtResource("4_oe8gm")]([ExtResource("2_2hms7"), ExtResource("5_khqwy"), ExtResource("6_hhc0f")])
+dedupe_key = "monster_name"
+
+[node name="Loading" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Loading"]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_r4htu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnlimitedMonsters" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="JamConnect" type="Node" parent="."]
+script = ExtResource("8_ukn5d")
+
+[connection signal="new_resources" from="LLMSubsystem" to="." method="_on_llm_subsystem_new_resources"]
+[connection signal="player_connected" from="JamConnect" to="." method="_on_jam_connect_player_connected"]

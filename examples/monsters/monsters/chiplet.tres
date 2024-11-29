@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Monster" load_steps=2 format=3 uid="uid://dy1yrgjy126om"]
+
+[ext_resource type="Script" path="res://examples/monsters/monster.gd" id="1_l3fbn"]
+
+[resource]
+script = ExtResource("1_l3fbn")
+monster_name = "Chiplet"
+monster_description = "Chiplets use their big, bushy tails to zap birds of prey. They thrive in community and use their natural signal processing abilities to communicate across long distances."
+power_level = 2
+elements = "Electric"
+rarity = "common"

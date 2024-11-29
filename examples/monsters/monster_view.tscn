@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://crtf1vj8eqoxd"]
+
+[ext_resource type="Script" path="res://examples/monsters/monster_view.gd" id="1_0nmll"]
+[ext_resource type="Script" path="res://addons/jam_launch/core/JamSync.gd" id="2_kvggp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbqlb"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_3q3o2"]
+font_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_2r4pg"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_kqnc1"]
+font_size = 8
+
+[node name="MonsterView" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -156.0
+offset_right = 100.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0nmll")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -145.0
+offset_right = 95.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MonsterView" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(190, 290)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="ColorRect/MarginContainer/MonsterView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_wbqlb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/MonsterView"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Description" type="Label" parent="ColorRect/MarginContainer/MonsterView/ColorRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_right = 149.0
+offset_bottom = 149.0
+label_settings = SubResource("LabelSettings_3q3o2")
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/MonsterView"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ColorRect/MarginContainer/MonsterView/HBoxContainer"]
+layout_mode = 2
+text = "Affinity"
+label_settings = SubResource("LabelSettings_2r4pg")
+horizontal_alignment = 1
+
+[node name="Affinity" type="Label" parent="ColorRect/MarginContainer/MonsterView/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="ColorRect/MarginContainer/MonsterView"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ColorRect/MarginContainer/MonsterView/HBoxContainer2"]
+layout_mode = 2
+text = "Power Level"
+label_settings = SubResource("LabelSettings_kqnc1")
+horizontal_alignment = 1
+
+[node name="PowerLevel" type="Label" parent="ColorRect/MarginContainer/MonsterView/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="JamSync" type="Node" parent="."]
+script = ExtResource("2_kvggp")

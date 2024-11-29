@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Monster" load_steps=2 format=3 uid="uid://b824cpbm4fygf"]
+
+[ext_resource type="Script" path="res://examples/monsters/monster.gd" id="1_br56h"]
+
+[resource]
+script = ExtResource("1_br56h")
+monster_name = "Rombone"
+monster_description = "A wolly mammoth like creature with a powerful musical trunk. Wealthy musical troupes travel with a Rombone or two."
+power_level = 7
+elements = "Brass"
+rarity = "rare"

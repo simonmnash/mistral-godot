@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Monster" load_steps=2 format=3 uid="uid://ciayubpgmhnou"]
+
+[ext_resource type="Script" path="res://examples/monsters/monster.gd" id="1_h1qss"]
+
+[resource]
+script = ExtResource("1_h1qss")
+monster_name = "Qwarp"
+monster_description = "Qwarp live in quiet ponds and feed on the energy around them. Their scales are perfect mirros."
+power_level = 5
+elements = "Mirror"
+rarity = "common"

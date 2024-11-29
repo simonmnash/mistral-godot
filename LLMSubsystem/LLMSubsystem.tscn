@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy0aqpx4ui64b"]
+
+[ext_resource type="Script" path="res://LLMSubsystem/llm_subsystem.gd" id="1_3y1wo"]
+
+[node name="LLMSubsystem" type="HTTPRequest"]
+script = ExtResource("1_3y1wo")
+model_name = null
+lore_prompt = null
+system_prompt_prefix = null
+few_shot_examples = null
+n_to_generate = null
+temp = null
+filter_key = null
+dedupe_key = null
+
+[connection signal="request_completed" from="." to="." method="_on_request_completed"]
